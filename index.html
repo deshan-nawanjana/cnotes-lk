@@ -1,0 +1,47 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>c.prog.json</title>
+  <style>
+    td {
+      padding: 20px;
+      font-size: 13px;
+    }
+    body {
+      background-color: #111;
+      color: #BBB;
+      margin: 0px;
+    }
+    .head {
+      background-color: rgba(255,255,255,0.2);
+      color: #FFF;
+      font-weight: bold;
+      font-size: 15px;
+      font-family: monospace;
+    }
+    table {
+      width: 100%;
+      border: none;
+    }
+  </style>
+  <link href="prism.css" type="text/css" rel="stylesheet" />
+  <script src="prism.js"></script>
+  <script src="cjson.js"></script>
+</head>
+<body>
+  <table cellpadding="0" cellspacing="0"></table>
+  <script>
+    let out = '';
+  
+    dbs.forEach(function(obj, i) {
+      out += '<tr><td class="head">' + (i + 1) + '. ' + obj.name + '</td></tr>';
+      out += '<tr><td><pre>';
+        out += Prism.highlight(obj.code, Prism.languages.c, 'c');
+      out += '</pre></td></tr>';
+    });
+  
+    document.querySelector('table').innerHTML = out;
+  </script>
+</body>
+</html>
